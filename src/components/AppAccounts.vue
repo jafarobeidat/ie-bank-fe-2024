@@ -111,6 +111,23 @@
             </b-form-input>
           </b-form-group>
 
+          <!-- Here is the addition of the country option in the account creation form-->
+           <b-form-group
+            id="form-country-group"
+            label="Country:"
+            label-for="form-country-input"
+          >
+            <b-form-input
+              id="form-country-input"
+              type="text"
+              v-model="createAccountForm.country"
+              placeholder="Enter Country"
+              required
+            >
+            </b-form-input>
+          </b-form-group>
+
+
           <b-button type="submit" variant="outline-info">Submit</b-button>
         </b-form>
       </b-modal>
@@ -156,6 +173,7 @@ export default {
       createAccountForm: {
         name: "",
         currency: "",
+        country: "", // Added country field to createAccountForm object
       },
       editAccountForm: {
         id: "",
@@ -268,6 +286,7 @@ export default {
       const payload = {
         name: this.createAccountForm.name,
         currency: this.createAccountForm.currency,
+        country: this.createAccountForm.country, // Added country field to the payload object
       };
       this.RESTcreateAccount(payload);
       this.initForm();
